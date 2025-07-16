@@ -28,10 +28,11 @@ const blogAdd = async (req, res) => {
   }
 };
 
+
 exports.getAllNews = async (req, res) => {
   try {
-    const newsList = await News.find().sort({ date: -1 });
-    res.status(200).json(newsList);
+    const news = await News.find().sort({ createdAt: -1 });
+    res.json(news);
   } catch (err) {
     res
       .status(500)
@@ -43,7 +44,7 @@ exports.getNewsById = async (req, res) => {
   try {
     const newsItem = await News.findById(req.params.id);
     if (!newsItem) return res.status(404).json({ message: "News not found" });
-    res.status(200).json(newsItem);
+    res.json(newsItem);
   } catch (err) {
     res
       .status(500)
