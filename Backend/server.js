@@ -14,7 +14,7 @@ mongoose.connect("mongodb://localhost:27017/msnclone", {
 }).then(() => console.log("MongoDB connected"))
   .catch(err => console.error(err));
 
-app.use("/api", newsRoutes);
+app.use("/api/blog", newsRoutes);
 
 const PORT = 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
