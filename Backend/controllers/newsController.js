@@ -1,57 +1,35 @@
-const News = require("../models/News");
+
 const Blog = require("../models/BlogAdd.model");
 
-const blogAdd = async (req, res) => {
-  try {
-    const { title, content, tags, image } = req.body;
-
-    if (!title || !content || !tags || !image) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Missing Details" });
-    }
-
-    const blogData = {
-      title,
-      tags,
-      content,
-      image,
-    };
-
-    console.log(1, blogData);
-
-    await Blog.create(blogData);
-
-    res.status(200).json({ success: true, message: "Blog Added" });
-  } catch (error) {
-    res.status(400).json({ success: false, message: error.message });
-  }
-};
-
-
+// GET all blogs
 exports.getAllNews = async (req, res) => {
   try {
-    const news = await News.find().sort({ createdAt: -1 });
-    res.json(news);
-  } catch (err) {
-    res
-      .status(500)
-      .json({ message: "Error fetching news", error: err.message });
+    const blogs = await Blog.find();
+    res.status(200).json(blogs);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching blogs", error });
   }
 };
 
+// GET blog by ID
 exports.getNewsById = async (req, res) => {
   try {
-    const newsItem = await News.findById(req.params.id);
-    if (!newsItem) return res.status(404).json({ message: "News not found" });
-    res.json(newsItem);
-  } catch (err) {
-    res
-      .status(500)
-      .json({ message: "Error fetching news by ID", error: err.message });
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) return res.status(404).json({ message: "Blog not found" });
+    res.status(200).json(blog);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching blog", error });
   }
 };
 
-module.exports = {
-  blogAdd,
+// POST new blog
+exports.blogAdd = async (req, res) => {
+  try {
+    const { title, category, content, image } = req.body;
+    const newBlog = new Blog({ title, category, content, image });
+    const savedBlog = await newBlog.save();
+    res.status(201).json(savedBlog);
+  } catch (error) {
+    res.status(400).json({ message: "Error adding blog", error });
+  }
 };
