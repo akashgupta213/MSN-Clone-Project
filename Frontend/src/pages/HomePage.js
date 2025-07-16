@@ -15,8 +15,6 @@ function HomePage() {
   const [bookmarks, setBookmarks] = useState(
     JSON.parse(localStorage.getItem("bookmarks")) || []
   );
-
-  // Fetch news on mount
   useEffect(() => {
     fetchNews();
   }, []);
@@ -33,8 +31,6 @@ function HomePage() {
       setLoading(false);
     }
   };
-
-  // Infinite scroll
   useEffect(() => {
     const handleScroll = () => {
       if (
@@ -56,7 +52,7 @@ function HomePage() {
       setDeleting(id);
       await axios.delete(`http://localhost:5000/api/news/${id}`);
       alert("News deleted successfully");
-      fetchNews(); // Auto refresh after delete
+      fetchNews(); 
     } catch (err) {
       console.error("Error deleting news:", err);
       alert("Failed to delete news");
@@ -75,7 +71,7 @@ function HomePage() {
     localStorage.setItem("bookmarks", JSON.stringify(updated));
   };
 
-  // Filters
+  
   const categories = [...new Set(newsList.map((news) => news.category).filter(Boolean))];
 
   const filteredNews = newsList
@@ -93,14 +89,14 @@ function HomePage() {
         minHeight: "100vh",
       }}
     >
-      {/* Dark mode toggle */}
+      
       <button onClick={toggleDarkMode} style={{ marginBottom: "15px" }}>
         {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
       </button>
 
       <h2>📰 Latest News</h2>
 
-      {/* Search input */}
+      
       <input
         type="text"
         placeholder="Search news by title..."
@@ -114,7 +110,6 @@ function HomePage() {
         }}
       />
 
-      {/* Category filter dropdown */}
       <select
         value={categoryFilter}
         onChange={(e) => setCategoryFilter(e.target.value)}
@@ -128,12 +123,10 @@ function HomePage() {
         ))}
       </select>
 
-      {/* Loading / error messages */}
       {loading && <p>Loading news...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
       {!loading && !error && visibleNews.length === 0 && <p>No news found.</p>}
 
-      {/* News list */}
       {visibleNews.map((news) => (
         <div
           key={news._id}
@@ -162,7 +155,6 @@ function HomePage() {
           <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
             <Link to={`/news/${news._id}`}>Read More</Link>
 
-            {/* Admin-only buttons */}
             {role === "admin" && (
               <>
                 <Link to={`/admin/edit/${news._id}`}>Edit</Link>
@@ -174,8 +166,6 @@ function HomePage() {
                 </button>
               </>
             )}
-
-            {/* Bookmark toggle */}
             <button onClick={() => toggleBookmark(news._id)}>
               {bookmarks.includes(news._id) ? "🔖 Bookmarked" : "🔖 Bookmark"}
             </button>
