@@ -1,11 +1,10 @@
 const News = require("../models/News");
-const Blog = require("../models/BlogAdd.model");
 
-const blogAdd = async (req, res) => {
+exports.blogAdd = async (req, res) => {
   try {
-    const { title, content, tags, image } = req.body;
+    const { title, content, category, image } = req.body;
 
-    if (!title || !content || !tags || !image) {
+    if (!title || !content || !category || !image) {
       return res
         .status(400)
         .json({ success: false, message: "Missing Details" });
@@ -13,14 +12,14 @@ const blogAdd = async (req, res) => {
 
     const blogData = {
       title,
-      tags,
+      category,
       content,
       image,
     };
 
     console.log(1, blogData);
 
-    await Blog.create(blogData);
+    await News.create(blogData);
 
     res.status(200).json({ success: true, message: "Blog Added" });
   } catch (error) {
@@ -51,6 +50,6 @@ exports.getNewsById = async (req, res) => {
   }
 };
 
-module.exports = {
-  blogAdd,
-};
+// module.exports = {
+//   blogAdd,
+// };
