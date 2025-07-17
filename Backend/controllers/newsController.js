@@ -1,6 +1,6 @@
 const News = require("../models/News");
 
-exports.blogAdd = async (req, res) => {
+const blogAdd = async (req, res) => {
   try {
     const { title, content, category, image } = req.body;
 
@@ -27,7 +27,7 @@ exports.blogAdd = async (req, res) => {
   }
 };
 
-exports.getAllNews = async (req, res) => {
+const getAllNews = async (req, res) => {
   try {
     const newsList = await News.find().sort({ date: -1 });
     res.status(200).json(newsList);
@@ -38,7 +38,7 @@ exports.getAllNews = async (req, res) => {
   }
 };
 
-exports.getNewsById = async (req, res) => {
+const getNewsById = async (req, res) => {
   try {
     const newsItem = await News.findById(req.params.id);
     if (!newsItem) return res.status(404).json({ message: "News not found" });
@@ -50,6 +50,6 @@ exports.getNewsById = async (req, res) => {
   }
 };
 
-// module.exports = {
-//   blogAdd,
-// };
+
+
+module.exports = {blogAdd,getNewsById, getAllNews}
