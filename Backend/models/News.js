@@ -6,7 +6,11 @@ const newsSchema = new mongoose.Schema({
   image: String,
   category: String,
   createdAt: { type: Date, default: Date.now }
-});
+},
+  { timestamps: true });
 
 
 module.exports = mongoose.model("News", newsSchema);
+
+
+

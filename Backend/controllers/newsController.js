@@ -1,41 +1,33 @@
-<<<<<<< HEAD
-const News = require("../models/News");
+const News = require("../models/News.js");
+ 
 
-const blogAdd = async (req, res) => {
+
+exports.addBlog = async (req, res) => {
   try {
-    const { title, content, category, image } = req.body;
+    const { title, description, category } = req.body;
 
-    if (!title || !content || !category || !image) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Missing Details" });
-    }
-
-    const blogData = {
-      title,
-      category,
-      content,
-      image,
-    };
-
-    console.log(1, blogData);
-
-    await News.create(blogData);
-
-    res.status(200).json({ success: true, message: "Blog Added" });
-  } catch (error) {
-    res.status(400).json({ success: false, message: error.message });
+    
+    const image = req.file ? `/uploads/${req.file.filename}` : "";
+  
+    const newBlog = new News({ title, description, category, image });
+    await newBlog.save();
+    res.status(201).json({ message: "Blog added successfully", blog: newBlog });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+    
   }
 };
 
-const getAllNews = async (req, res) => {
-=======
 
-const Blog = require("../models/BlogAdd.model");
+
+
+
+
+
+
 
 // GET all blogs
 exports.getAllNews = async (req, res) => {
->>>>>>> 813efc57f220ae65f7ba8cfd63700f93e9bba912
   try {
     const blogs = await Blog.find();
     res.status(200).json(blogs);
@@ -44,12 +36,9 @@ exports.getAllNews = async (req, res) => {
   }
 };
 
-<<<<<<< HEAD
-const getNewsById = async (req, res) => {
-=======
+
 // GET blog by ID
 exports.getNewsById = async (req, res) => {
->>>>>>> 813efc57f220ae65f7ba8cfd63700f93e9bba912
   try {
     const blog = await Blog.findById(req.params.id);
     if (!blog) return res.status(404).json({ message: "Blog not found" });
@@ -59,11 +48,6 @@ exports.getNewsById = async (req, res) => {
   }
 };
 
-<<<<<<< HEAD
-
-
-module.exports = {blogAdd,getNewsById, getAllNews}
-=======
 // DELETE blog by ID
 exports.deleteNews = async (req, res) => {
   try {
@@ -89,4 +73,4 @@ exports.blogAdd = async (req, res) => {
     res.status(400).json({ message: "Error adding blog", error });
   }
 };
->>>>>>> 813efc57f220ae65f7ba8cfd63700f93e9bba912
+
