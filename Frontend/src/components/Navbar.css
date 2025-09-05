@@ -1,124 +1,169 @@
-/* Navbar Layout */
+/*
+ * This CSS file styles a professional, modern navigation bar.
+ * It uses a dark gradient background, vibrant buttons, and smooth transitions
+ * to complement the aesthetic of the authentication page.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Main navigation bar container */
 .custom-navbar {
-  background: var(--bg-color);
-  padding: 0.8rem 1.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: background 0.3s ease, color 0.3s ease;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    background: linear-gradient(to right, #2c3e50, #4a638c);
+    padding: 1rem 2rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.5s ease;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Sections (Left, Center, Right) */
 .nav-section {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }
 .nav-section.center {
-  flex: 1;
-  justify-content: center;
+    flex: 1;
+    justify-content: center;
 }
 
-/* Brand / Logo */
+/* Logo styling */
 .nav-logo {
-  font-size: 1.4rem;
-  font-weight: 700;
-  text-decoration: none;
-  color: var(--text-color);
-  transition: color 0.3s ease;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    transition: color 0.3s ease;
 }
 .nav-logo:hover {
-  color: #0d6efd;
+    color: #bfe9ff;
 }
 
-/* Links */
+/* Navigation link styling */
 .nav-link {
-  font-weight: 500;
-  text-decoration: none;
-  color: var(--text-color);
-  transition: color 0.3s ease;
+    font-weight: 500;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Inter', sans-serif;
+    transition: color 0.3s ease;
 }
 .nav-link:hover {
-  color: #0d6efd;
+    color: #fff;
 }
 
-/* Mode Toggle */
+/* Light/Dark mode toggle button */
 .mode-toggle {
-  background: none;
-  border: 2px solid var(--text-color);
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: 600;
-  color: var(--text-color);
-  transition: all 0.3s ease;
+    background: none;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease-in-out;
+    font-family: 'Inter', sans-serif;
 }
 .mode-toggle:hover {
-  background: #0d6efd;
-  color: #fff;
-  border-color: #0d6efd;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: #fff;
 }
 
-/* --- New Button Styles --- */
-
+/* Button container */
 .nav-button {
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 0.9rem;
-  padding: 0.5rem 1.25rem;
-  border-radius: 50px; /* Large border-radius for an oval/pill shape */
-  transition: all 0.3s ease;
-  white-space: nowrap; /* Prevents text from wrapping on small screens */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+    white-space: nowrap;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.nav-button-register {
-  color: #0d6efd;
-  border: 2px solid #0d6efd;
+/* Register button styling */
+/* .nav-button-register {
+    color: #84a2b9;
+    background: transparent;
+    border: 2px solid #84a2b9;
 }
-
 .nav-button-register:hover {
-  background-color: #0d6efd;
-  color: #fff;
-}
+    background-color: #84a2b9;
+    color: #fff;
+    border-color: #84a2b9;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+} */
 
+/* Login button styling */
 .nav-button-login {
-  background-color: #0d6efd;
-  color: #fff;
-  border: 2px solid #0d6efd;
+    background: none;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease-in-out;
+    font-family: 'Inter', sans-serif;
 }
-
 .nav-button-login:hover {
-  background-color: transparent;
-  color: #0d6efd;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: #fff;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* Theme Variables */
+/* Logout button styling */
+.nav-button-logout {
+     background: none;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease-in-out;
+    font-family: 'Inter', sans-serif;
+}
+.nav-button-logout:hover {
+     background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: #fff;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Dark mode variables and styling */
 :root {
-  --bg-color: #ffffff;
-  --text-color: #222;
+    --bg-color: #ffffff;
+    --text-color: #222;
 }
 body.dark-mode {
-  --bg-color: #1e1e1e;
-  --text-color: #f1f1f1;
-  background: #121212;
-  color: #f1f1f1;
+    --bg-color: #1e1e1e;
+    --text-color: #f1f1f1;
+    background: #121212;
+    color: #f1f1f1;
 }
 
-/* Dark mode specific button styles */
 body.dark-mode .nav-button-register {
-  color: #0d6efd;
-  border-color: #0d6efd;
+    color: #0d6efd;
+    border-color: #0d6efd;
 }
 
 body.dark-mode .nav-button-login {
-  background-color: #0d6efd;
-  color: #fff;
+    background-color: #0d6efd;
+    color: #fff;
 }
 body.dark-mode .nav-button-login:hover {
-  background-color: transparent;
-  color: #0d6efd;
+    background-color: transparent;
+    color: #0d6efd;
 }

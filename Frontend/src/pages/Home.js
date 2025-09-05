@@ -8,7 +8,7 @@ export default function Home() {
   const { categoryName } = useParams();
   const navigate = useNavigate();
 
-  const category = (categoryName || "general").toLowerCase(); // ensure lowercase for NewsAPI
+  const category = (categoryName || "general").toLowerCase(); 
   const API_KEY = "1689a1d1e7924c429574360b148f6aa8";
   const PAGE_SIZE = 10;
 
@@ -18,12 +18,11 @@ export default function Home() {
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
 
-  // Reset page to 1 when category changes
   useEffect(() => {
     setPage(1);
   }, [category]);
 
-  // Fetch news whenever category or page changes
+  
   useEffect(() => {
     const fetchNews = async () => {
       setLoading(true);
@@ -72,7 +71,7 @@ export default function Home() {
     if (loading) return <Spinner />;
   return (
     <div className="container mt-4">
-      {/* Search and Category Filter */}
+      
       <div className="search-filter-section mb-4 d-flex flex-column flex-md-row gap-3">
         <input
           type="text"
@@ -98,7 +97,7 @@ export default function Home() {
         </select>
       </div>
 
-      {/* Loading Spinner */}
+      
       {loading ? (
         <div className="text-center my-5">
           <div className="spinner-border text-primary" role="status">
@@ -107,7 +106,7 @@ export default function Home() {
         </div>
       ) : (
         <>
-          {/* News Grid */}
+         
           <div className="news-grid-container">
             {filteredNews.length > 0 ? (
               filteredNews.map((item, index) => (
@@ -120,7 +119,7 @@ export default function Home() {
             )}
           </div>
 
-          {/* Pagination */}
+        
           <div className="pagination-buttons d-flex justify-content-between my-5">
             <button
               className="btn btn-primary"

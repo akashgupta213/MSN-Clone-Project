@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import API from "../../api";
 import "./AdminFeatures.css";
 
-export default function EditNews() {
+export default function EditNews({ darkMode }) {
   const { id } = useParams();
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
@@ -48,26 +48,30 @@ export default function EditNews() {
   };
 
   return (
-    <div className="feature-wrapper">
-      <div className="feature-container">
+    <div className={`feature-wrapper ${darkMode ? "dark-mode" : ""}`}>
+      <div className="feature-container card-background">
         <h2 className="feature-title">✏️ Edit News</h2>
+
         {message && (
           <p className={`feature-message ${message.includes("✅") ? "success" : "error"}`}>
             {message}
           </p>
         )}
+
         <form onSubmit={handleEdit} className="feature-form">
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             className="feature-input"
+            placeholder="Enter title"
             required
           />
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
             className="feature-textarea"
+            placeholder="Enter content"
             required
           />
           <input
@@ -75,14 +79,20 @@ export default function EditNews() {
             onChange={(e) => setImage(e.target.files[0])}
             className="feature-input"
           />
-          {image && typeof image === "string" && (
-            <img
-              src={image}
-              alt="preview"
-              style={{ width: "100%", height: "200px", objectFit: "cover", borderRadius: "8px", marginBottom: "10px" }}
-            />
+
+          {image && (
+            <div className="feature-image-wrapper">
+              <img
+                src={typeof image === "string" ? image : URL.createObjectURL(image)}
+                alt="preview"
+                className="feature-preview-image"
+              />
+            </div>
           )}
-          <button type="submit" className="feature-button">Update News</button>
+
+          <button type="submit" className="feature-button">
+            Update News
+          </button>
         </form>
       </div>
     </div>

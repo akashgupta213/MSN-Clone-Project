@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 const verifyToken = (req, res, next) => {
-  // Extract token from header
+
   const authHeader = req.header("Authorization");
   if (!authHeader) return res.status(401).json({ message: "Access denied, no token provided" });
 
@@ -10,7 +10,7 @@ const verifyToken = (req, res, next) => {
 
   try {
     const verified = jwt.verify(token, process.env.JWT_SECRET);
-    req.admin = verified; // attach admin payload to request
+    req.admin = verified; 
     next();
   } catch (error) {
     res.status(400).json({ message: "Invalid or expired token" });

@@ -12,7 +12,6 @@ export default function EditNews() {
   const [author, setAuthor] = useState("");
   const [image, setImage] = useState(null);
 
-  // Load existing news
   useEffect(() => {
     API.get(`/news/${id}`).then((res) => {
       const n = res.data;
@@ -23,7 +22,7 @@ export default function EditNews() {
     });
   }, [id]);
 
-  // Handle update
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

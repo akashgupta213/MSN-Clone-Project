@@ -1,4 +1,4 @@
-// src/pages/admin/DeleteNews.js
+
 import { useEffect, useState } from "react";
 import API from "../../api";
 import "./AdminFeatures.css";
@@ -8,7 +8,7 @@ export default function DeleteNews() {
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
 
-  // Fetch all news
+
   useEffect(() => {
     const fetchNews = async () => {
       try {
@@ -23,7 +23,6 @@ export default function DeleteNews() {
     fetchNews();
   }, []);
 
-  // Delete a news item
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this news?")) return;
     try {
@@ -31,7 +30,7 @@ export default function DeleteNews() {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setMessage("✅ News deleted successfully!");
-      setNewsList(newsList.filter((news) => news._id !== id)); // Remove from list
+      setNewsList(newsList.filter((news) => news._id !== id)); 
     } catch {
       setMessage("❌ Failed to delete news");
     }

@@ -2,12 +2,11 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Admin = require("../models/Admin.model");
 
-// Register new admin (use only once, then disable in production)
+
 exports.registerAdmin = async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    // check if already exists
     const existingAdmin = await Admin.findOne({ username });
     if (existingAdmin) {
       return res.status(400).json({ message: "Admin already exists" });
@@ -23,7 +22,6 @@ exports.registerAdmin = async (req, res) => {
   }
 };
 
-// Login admin
 exports.loginAdmin = async (req, res) => {
   try {
     const { username, password } = req.body;

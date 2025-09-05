@@ -1,6 +1,5 @@
 const News = require("../models/BlogAdd.model");
 
-// ✅ GET all news
 exports.getAllNews = async (req, res) => {
   try {
     const news = await News.find().sort({ date: -1 });
@@ -10,7 +9,6 @@ exports.getAllNews = async (req, res) => {
   }
 };
 
-// ✅ GET news by ID
 exports.getNewsById = async (req, res) => {
   try {
     const news = await News.findById(req.params.id);
@@ -21,7 +19,6 @@ exports.getNewsById = async (req, res) => {
   }
 };
 
-// ➕ POST new news (with image upload)
 exports.addNews = async (req, res) => {
   try {
     console.log("📩 Incoming AddNews Request:");
@@ -42,15 +39,13 @@ exports.addNews = async (req, res) => {
 };
 
 
-
-// ✏️ PUT update news by ID (supports updating image)
 exports.updateNews = async (req, res) => {
   try {
     const { id } = req.params;
     const { title, category, content, author } = req.body;
     const image = req.file ? `/uploads/${req.file.filename}` : undefined;
 
-    // Build update object
+  
     const updateData = { title, category, content, author };
     if (image) updateData.image = image;
 
@@ -68,7 +63,6 @@ exports.updateNews = async (req, res) => {
   }
 };
 
-// ❌ DELETE news by ID
 exports.deleteNews = async (req, res) => {
   try {
     const deleted = await News.findByIdAndDelete(req.params.id);

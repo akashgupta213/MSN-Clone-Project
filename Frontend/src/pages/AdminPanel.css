@@ -1,11 +1,10 @@
-/* Container */
 .admin-container {
   display: flex;
   height: 100vh;
   font-family: Arial, sans-serif;
+  transition: background-color 0.3s ease;
 }
 
-/* Sidebar */
 .admin-sidebar {
   width: 240px;
   background-color: #1e1e2f;
@@ -13,6 +12,7 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .admin-title {
@@ -52,11 +52,11 @@
   border-color: #ff4d4d;
 }
 
-/* Content */
 .admin-content {
   flex-grow: 1;
   padding: 30px;
   background-color: #f5f5f5;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .admin-content h2 {
@@ -66,4 +66,74 @@
 
 .admin-content .text-muted {
   color: #555;
+}
+
+/* DARK MODE STYLES */
+.dark-mode .admin-sidebar {
+  background-color: #111122;
+  color: #fff;
+}
+
+.dark-mode .admin-sidebar .nav-link {
+  color: #bbb;
+}
+
+.dark-mode .admin-sidebar .nav-link:hover {
+  background-color: #333355;
+  color: #fff;
+}
+
+.dark-mode .btn-logout {
+  border-color: #bbb;
+  color: #bbb;
+}
+
+.dark-mode .btn-logout:hover {
+  background-color: #ff4d4d;
+  border-color: #ff4d4d;
+}
+
+.dark-mode .admin-content {
+  background-color: #1a1a1a;
+  color: #ddd;
+}
+
+.dark-mode .admin-content .text-muted {
+  color: #aaa;
+}
+
+.admin-sidebar {
+  width: 240px;
+  background-color: #1e1e2f;
+  color: #fff; 
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.admin-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.dark-mode .admin-sidebar {
+  background-color: #111122;
+  color: #fff; 
+}
+
+.dark-mode .admin-sidebar .admin-title {
+  color: #fff;
+}
+
+.admin-content h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.dark-mode .admin-content h2 {
+  color: #fff; 
 }

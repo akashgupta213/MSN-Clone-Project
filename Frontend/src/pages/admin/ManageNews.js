@@ -30,7 +30,7 @@ export default function ManageNews() {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       alert("✅ News deleted successfully!");
-      fetchNews(); // refresh list
+      fetchNews();
     } catch {
       alert("❌ Failed to delete news");
     }

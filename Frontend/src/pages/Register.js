@@ -28,12 +28,12 @@ export default function Register() {
   };
 
   return (
-    <div className="auth-container"> {/* Use the new container class */}
-      <div className="auth-card"> {/* Use the new card class */}
+    <div className="auth-container"> 
+      <div className="auth-card"> 
         <h3 className="text-center mb-4">📝 Register</h3>
-        {error && <div className="alert alert-danger auth-alert">{error}</div>} {/* Add auth-alert class */}
-        {success && <div className="alert alert-success auth-alert">{success}</div>} {/* Add auth-alert class */}
-        <form onSubmit={handleRegister}>
+        {error && <div className="alert alert-danger auth-alert">{error}</div>} 
+        {success && <div className="alert alert-success auth-alert">{success}</div>} 
+                <form onSubmit={handleRegister}>
           <div className="form-group">
             <label className="form-label">Username</label>
             <input

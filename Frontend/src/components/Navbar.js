@@ -1,4 +1,4 @@
-// src/components/Navbar.js
+
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
@@ -16,22 +16,22 @@ export default function Navbar({ token, setToken }) {
   }, [darkMode]);
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); // remove token from storage
-    setToken(null);                    // update React state
-    navigate("/login");                // redirect to login page
+    localStorage.removeItem("token"); 
+    setToken(null);                    
+    navigate("/login");                
   };
 
   return (
     <nav className="custom-navbar">
-      {/* Left Section */}
+     
       <div className="nav-section left">
         <Link to={token ? "/home" : "/register"} className="nav-logo">
-          📰 NewsPortal
+          📰 NewsNova
         </Link>
         {token && <Link to="/home" className="nav-link">Home</Link>}
       </div>
 
-      {/* Center Section */}
+     
       <div className="nav-section center">
         <button
           className="mode-toggle"
@@ -41,7 +41,7 @@ export default function Navbar({ token, setToken }) {
         </button>
       </div>
 
-      {/* Right Section */}
+      
       <div className="nav-section right">
         {!token ? (
           <>
@@ -54,14 +54,14 @@ export default function Navbar({ token, setToken }) {
           </>
         ) : (
           <>
-            <Link to="/adminpanel" className="nav-button nav-button-admin">
+            <Link to="/adminpanel" className="nav-button nav-button-logout">
               Admin Panel
             </Link>
             <button
               onClick={handleLogout}
               className="nav-button nav-button-logout"
             >
-              🚪 Logout
+               Logout
             </button>
           </>
         )}

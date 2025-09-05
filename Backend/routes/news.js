@@ -4,13 +4,12 @@ import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
 
-// ✅ GET all news
+
 router.get("/", async (req, res) => {
   const news = await News.find().sort({ date: -1 });
   res.json(news);
 });
 
-// ✅ GET by ID
 router.get("/:id", async (req, res) => {
   try {
     const news = await News.findById(req.params.id);
@@ -21,7 +20,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// ➕ POST (Add News)
+
 router.post("/", verifyToken, async (req, res) => {
   try {
     const { title, description, category, image, author } = req.body;
@@ -33,7 +32,6 @@ router.post("/", verifyToken, async (req, res) => {
   }
 });
 
-// ✏️ PUT (Edit News)
 router.put("/:id", verifyToken, async (req, res) => {
   try {
     const updatedNews = await News.findByIdAndUpdate(req.params.id, req.body, {
@@ -46,7 +44,7 @@ router.put("/:id", verifyToken, async (req, res) => {
   }
 });
 
-// ❌ DELETE (Delete News)
+
 router.delete("/:id", verifyToken, async (req, res) => {
   try {
     const deleted = await News.findByIdAndDelete(req.params.id);

@@ -1,4 +1,4 @@
-// src/pages/admin/AddNews.js
+
 import { useState } from "react";
 import API from "../../api";
 import "./AdminFeatures.css";

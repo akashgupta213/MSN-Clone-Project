@@ -1,9 +1,6 @@
-// src/components/NewsCard.js
-
 import { Link } from "react-router-dom";
 
 export default function NewsCard({ article }) {
-  // Use optional chaining for safe access
   const image = article.urlToImage;
   const title = article.title;
   const description = article.description;

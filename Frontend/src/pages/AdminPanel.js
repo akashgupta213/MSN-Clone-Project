@@ -1,16 +1,16 @@
-// src/pages/AdminPanel.js
+
 import { Link, Outlet } from "react-router-dom";
 import "./AdminPanel.css";
 
 export default function AdminPanel() {
   const handleLogout = () => {
-    localStorage.removeItem("token"); // remove token
-    window.location.href = "/";        // redirect to homepage/login
+    localStorage.removeItem("token"); 
+    window.location.href = "/";        
   };
 
   return (
     <div className="admin-container">
-      {/* Sidebar */}
+
       <div className="admin-sidebar">
         <h4 className="admin-title">⚙️ Admin</h4>
         <nav>
@@ -32,9 +32,9 @@ export default function AdminPanel() {
         </nav>
       </div>
 
-      {/* Content Area */}
+      
       <div className="admin-content">
-        <Outlet /> {/* Nested routes render here */}
+        <Outlet />
       </div>
     </div>
   );

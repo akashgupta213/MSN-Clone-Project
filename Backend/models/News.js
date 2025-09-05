@@ -4,7 +4,7 @@ const newsSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   category: { type: String, required: true },
-  image: { type: String }, // image URL
+  image: { type: String }, 
   author: { type: String, default: "Anonymous" },
   date: { type: Date, default: Date.now }
 });
