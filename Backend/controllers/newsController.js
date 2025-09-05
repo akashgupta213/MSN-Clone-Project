@@ -1,73 +1,77 @@
-<<<<<<< HEAD
-const News = require("../models/News");
+const News = require("../models/BlogAdd.model");
 
-const blogAdd = async (req, res) => {
+// ✅ GET all news
+exports.getAllNews = async (req, res) => {
   try {
-    const { title, content, category, image } = req.body;
+    const news = await News.find().sort({ date: -1 });
+    res.status(200).json(news);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching news", error });
+  }
+};
 
-    if (!title || !content || !category || !image) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Missing Details" });
+// ✅ GET news by ID
+exports.getNewsById = async (req, res) => {
+  try {
+    const news = await News.findById(req.params.id);
+    if (!news) return res.status(404).json({ message: "News not found" });
+    res.status(200).json(news);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching news", error });
+  }
+};
+
+// ➕ POST new news (with image upload)
+exports.addNews = async (req, res) => {
+  try {
+    console.log("📩 Incoming AddNews Request:");
+    console.log("Body:", req.body);
+    console.log("File:", req.file);
+
+    const { title, category, content, author } = req.body;
+    const image = req.file ? `/uploads/${req.file.filename}` : null;
+
+    const newNews = new News({ title, category, content, author, image });
+    const savedNews = await newNews.save();
+
+    res.status(201).json(savedNews);
+  } catch (error) {
+    console.error("❌ AddNews Error:", error);
+    res.status(400).json({ message: "Error adding news", error: error.message });
+  }
+};
+
+
+
+// ✏️ PUT update news by ID (supports updating image)
+exports.updateNews = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, category, content, author } = req.body;
+    const image = req.file ? `/uploads/${req.file.filename}` : undefined;
+
+    // Build update object
+    const updateData = { title, category, content, author };
+    if (image) updateData.image = image;
+
+    const updatedNews = await News.findByIdAndUpdate(id, updateData, {
+      new: true,
+    });
+
+    if (!updatedNews) {
+      return res.status(404).json({ message: "News not found" });
     }
 
-    const blogData = {
-      title,
-      category,
-      content,
-      image,
-    };
-
-    console.log(1, blogData);
-
-    await News.create(blogData);
-
-    res.status(200).json({ success: true, message: "Blog Added" });
+    res.status(200).json(updatedNews);
   } catch (error) {
-    res.status(400).json({ success: false, message: error.message });
+    res.status(400).json({ message: "Error updating news", error });
   }
 };
 
-const getAllNews = async (req, res) => {
-=======
-
-const Blog = require("../models/BlogAdd.model");
-
-// GET all blogs
-exports.getAllNews = async (req, res) => {
->>>>>>> 813efc57f220ae65f7ba8cfd63700f93e9bba912
-  try {
-    const blogs = await Blog.find();
-    res.status(200).json(blogs);
-  } catch (error) {
-    res.status(500).json({ message: "Error fetching blogs", error });
-  }
-};
-
-<<<<<<< HEAD
-const getNewsById = async (req, res) => {
-=======
-// GET blog by ID
-exports.getNewsById = async (req, res) => {
->>>>>>> 813efc57f220ae65f7ba8cfd63700f93e9bba912
-  try {
-    const blog = await Blog.findById(req.params.id);
-    if (!blog) return res.status(404).json({ message: "Blog not found" });
-    res.status(200).json(blog);
-  } catch (error) {
-    res.status(500).json({ message: "Error fetching blog", error });
-  }
-};
-
-<<<<<<< HEAD
-
-
-module.exports = {blogAdd,getNewsById, getAllNews}
-=======
-// DELETE blog by ID
+// ❌ DELETE news by ID
 exports.deleteNews = async (req, res) => {
   try {
-    const deleted = await Blog.findByIdAndDelete(req.params.id);
+    const deleted = await News.findByIdAndDelete(req.params.id);
     if (!deleted) {
       return res.status(404).json({ message: "News not found" });
     }
@@ -76,17 +80,3 @@ exports.deleteNews = async (req, res) => {
     res.status(500).json({ message: "Error deleting news", error });
   }
 };
-
-
-// POST new blog
-exports.blogAdd = async (req, res) => {
-  try {
-    const { title, category, content, image } = req.body;
-    const newBlog = new Blog({ title, category, content, image });
-    const savedBlog = await newBlog.save();
-    res.status(201).json(savedBlog);
-  } catch (error) {
-    res.status(400).json({ message: "Error adding blog", error });
-  }
-};
->>>>>>> 813efc57f220ae65f7ba8cfd63700f93e9bba912

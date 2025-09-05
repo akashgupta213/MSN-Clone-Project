@@ -1,0 +1,206 @@
+/* ======================== */
+/* General Layout & Spacing */
+/* ======================== */
+
+.container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* ============================ */
+/* Search and Filter Section  */
+/* ============================ */
+.search-filter-section {
+  display: flex;
+  gap: 1.5rem; /* Increased space between search and filter */
+  margin-bottom: 2.5rem; /* More space below the search/filter bar */
+  align-items: center;
+}
+
+.search-filter-section .form-control {
+  flex: 2;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.search-filter-section .form-select {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+
+/* ======================== */
+/* News Grid Layout    */
+/* ======================== */
+.news-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem; /* Increased space between cards */
+}
+
+/* ============================ */
+/* News Card Styling      */
+/* ============================ */
+.card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden; /* Ensures image corners match card corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* A better default shadow */
+  transition: all 0.3s ease-in-out;
+}
+
+.card.hover-shadow:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-8px); /* More noticeable lift on hover */
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card-img-top:hover {
+  transform: scale(1.05); /* Slight zoom effect on image hover */
+}
+
+.card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  padding: 1rem 1.5rem;
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+/* ============================ */
+/* Button and Link Styling   */
+/* ============================ */
+.btn {
+  border-radius: 50px; /* Pill shape for all buttons */
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary, .btn-outline-primary:hover {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+}
+.btn-outline-primary {
+  color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-outline-warning {
+  color: #ffc107;
+  border-color: #ffc107;
+}
+
+.btn-outline-danger {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+/* ======================== */
+/* Utility Classes      */
+/* ======================== */
+.text-center {
+  text-align: center;
+}
+.my-5 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.visually-hidden {
+  display: none;
+}
+
+/* ... (your existing Home.css code) ... */
+
+/* ============================ */
+/* Pagination Buttons       */
+/* ============================ */
+.pagination-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.pagination-buttons .btn {
+  width: 150px;
+  /* Add a subtle transition for a smooth effect */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.pagination-buttons .btn:hover {
+  /* This moves the button up slightly and adds a shadow on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.pagination-buttons .btn:disabled {
+  /* Styles for the disabled state */
+  background-color: #e9ecef;
+  border-color: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
+  transform: none; /* Reset the transform when disabled */
+  box-shadow: none; /* Remove the shadow when disabled */
+}/* ============================ */
+/* Pagination Buttons       */
+/* ============================ */
+.pagination-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.pagination-buttons .btn {
+  width: 150px;
+  /* Add a subtle transition for a smooth effect */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.pagination-buttons .btn:hover {
+  /* This moves the button up slightly and adds a shadow on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.pagination-buttons .btn:disabled {
+  /* Styles for the disabled state */
+  background-color: #e9ecef;
+  border-color: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
+  transform: none; /* Reset the transform when disabled */
+  box-shadow: none; /* Remove the shadow when disabled */
+}
