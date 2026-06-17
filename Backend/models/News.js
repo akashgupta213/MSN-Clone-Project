@@ -5,6 +5,7 @@ const newsSchema = new mongoose.Schema({
   description: String,
   image: String,
   category: String,
+  author: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false }, // false for backward compatibility with seeded data
   createdAt: { type: Date, default: Date.now }
 },
   { timestamps: true });

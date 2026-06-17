@@ -1,0 +1,21 @@
+.main-div {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  background-image: url(https://media.istockphoto.com/id/887987150/photo/blogging-woman-reading-blog.jpg?s=612x612&w=0&k=20&c=7SScR_Y4n7U3k5kBviYm3VwEmW4vmbngDUa0we429GA=);
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+}
+.b1 {
+  border-radius: 3px;
+  width: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+  background-color: rgb(86, 108, 114);
+  opacity: 0.9;
+  padding: 30px 10px;
+}
+
